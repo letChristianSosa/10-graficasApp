@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +14,7 @@ export class GraficasService {
 
   getUsuariosRSDonaData() {
     return this.getUsuariosRS().pipe(
+      delay(1500),
       map((data) => {
         const labels = Object.keys(data);
         const values = Object.values(data);
